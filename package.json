@@ -1,0 +1,90 @@
+{
+  "name": "pathfinder-calculator",
+  "version": "1.0.0",
+  "description": "Pathfinder calculator",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./dist/app.js",
+    "build": "tsc -pretty -p .",
+    "start-offline": "npm run build && serverless offline start",
+    "test": "npm run test:lint && npm run test:unit",
+    "test:unit": "jest --forceExit --detectOpenHandles",
+    "test:lint": "eslint \"./src/**/*.ts\"",
+    "deploy": "npm run build && sls deploy --force --verbose",
+    "db:migrate": "npx sequelize db:migrate --env=database",
+    "test:coverage": "jest --coverage"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run test:lint",
+      "pre-push": "npm run test:unit"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eucglobaldemo/pathfinder-calculator.git"
+  },
+  "author": "VMware",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eucglobaldemo/pathfinder-calculator/issues"
+  },
+  "homepage": "https://github.com/eucglobaldemo/pathfinder-calculator#readme",
+  "dependencies": {
+    "@azure/arm-commerce": "^2.1.1",
+    "@azure/ms-rest-js": "^1.8.15",
+    "@azure/ms-rest-nodeauth": "^3.0.5",
+    "@types/jsonwebtoken": "^8.5.0",
+    "@types/uuid": "^8.3.0",
+    "@vmw-pathfinder/tools": "^1.0.1",
+    "@vmw-pathfinder/xray-postgres-wrapper": "0.0.1",
+    "aws-xray-sdk": "3.2.0",
+    "axios": "^0.20.0",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "getenv": "^1.0.0",
+    "helmet": "^4.1.1",
+    "husky": "^4.3.0",
+    "joi": "^17.2.1",
+    "joiful": "^2.0.1",
+    "memjs": "^1.2.2",
+    "moment": "^2.29.1",
+    "pg": "^8.4.1",
+    "reflect-metadata": "^0.1.13",
+    "sequelize": "5.21.10",
+    "uuid": "^8.3.0"
+  },
+  "devDependencies": {
+    "@types/express": "4.16.0",
+    "@types/getenv": "^1.0.0",
+    "@types/jest": "23.3.9",
+    "@types/joi": "13.6.2",
+    "@types/memjs": "^1.2.1",
+    "@types/node": "14.0.27",
+    "@types/validator": "10.11.3",
+    "@typescript-eslint/eslint-plugin": "^3.10.1",
+    "eslint": "^7.10.0",
+    "eslint-config-standard": "12.0",
+    "eslint-config-standard-with-typescript": "^19.0.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "jest": "23.6.0",
+    "sequelize-cli": "^5.5.0",
+    "sequelize-typescript": "1.1.0",
+    "serverless": "^2.8.0",
+    "serverless-dotenv-plugin": "^3.1.0",
+    "serverless-log-forwarding": "^1.4.0",
+    "serverless-offline": "^6.8.0",
+    "serverless-offline-scheduler": "^0.4.2",
+    "serverless-offline-sns": "^0.68.0",
+    "serverless-plugin-split-stacks": "^1.9.3",
+    "ts-jest": "23.10.4",
+    "typescript": "^4.0.3"
+  },
+  "resolutions": {
+    "@types/express": "4.16.0"
+  }
+}
