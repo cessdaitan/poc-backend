@@ -19,30 +19,19 @@ export class GeneralInputsRepository<
     return inputsModel;
   }
 
-  // public async updateUserInputsById(userRequestInputs: InputsType, oldInputId: number): Promise<string> {
-  //   const inputsTransformedToSave = this.transformModel(userRequestInputs);
-  //   const [, [inputsUpdated]] = await this.modelType.update(
-  //     inputsTransformedToSave,
-  //     { where: { id: oldInputId }, returning: true }
-  //   );
-  //   return inputsUpdated.uuid;
-  // }
+  public async deleteById(id: string): Promise<number> {
+    const result = this.modelType.destroy({
+      where: { id }
+    });
+    return result;
+  }
 
-  // /**
-  //  * This function destroys records older than date
-  //  * and shareable equals to true
-  //  *
-  //  * @param date date to delete lather then
-  //  * @returns The ammount of rows deleted
-  //  */
-  // public async cleanUp(date: string): Promise<number> {
-  //   return this.modelType.destroy({
-  //     where: {
-  //       shareable: true,
-  //       createdAt: {
-  //         [Op.lt]: date
-  //       }
-  //     }
-  //   });
-  // }
+  public async updateById(id: string, newData: InputsType): Promise<ModelType> {
+    const inputsModel = this.modelType.update(
+      newData,
+      { where: { id }, returning: true }
+    );
+    return inputsModel;
+  }
+
 }

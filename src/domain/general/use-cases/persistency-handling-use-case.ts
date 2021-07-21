@@ -18,5 +18,14 @@ export class PersistencyHandlingUseCase<
     const result = await this.inputsRepository.getById(id);
     return result;
   }
+  public async deleteById(id: string): Promise<number> {
+    const result = await this.inputsRepository.deleteById(id);
+    return result;
+  }
+
+  public async updateById(id: string, newData: InputsType): Promise<object> {
+    const result = await this.inputsRepository.updateById(id, newData);
+    return result;
+  }
 
 }

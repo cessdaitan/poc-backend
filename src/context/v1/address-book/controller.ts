@@ -33,4 +33,27 @@ export class AddressBookController {
       return internalServerError();
     }
   }
+
+  public async updateAddressBook(req: IHttpRequest): Promise<IHttpResponse> {
+    try {
+      const result = await this.addressBookCrudUseCases.updateById(req.params.id, req.body as IAddressBookInputs);
+      return ok(result);
+    } catch (error) {
+      console.error("Error on updateAddressBook:", error);
+      return internalServerError();
+    }
+  }
+
+  public async deleteAddressBook(req: IHttpRequest): Promise<IHttpResponse> {
+    try {
+      const result = await this.addressBookCrudUseCases.deleteById(req.params.id);
+      if(!result) {
+        throw new Error("Failed to delete item.");
+      }
+      return ok();
+    } catch (error) {
+      console.error("Error on deleteAddressBook:", error);
+      return internalServerError();
+    }
+  }
 }

@@ -15,13 +15,13 @@ router.get("/:id", [], async (req, res, next) => {
   return next(response);
 });
 
-// router.delete("/address-book/:id", [], async (req, res, next) => {
-//   const response = await controller.getCalculationByUuid(req as IHttpRequest);
-//   return next(response);
-// });
+router.delete("/:id", [], async (req, res, next) => {
+  const response = await controller.deleteAddressBook(req as IHttpRequest);
+  return next(response);
+});
 
-// router.put("/address-book/:id", [], async (req, res, next) => {
-//   return next(await controller.saveCalculation(req as IHttpRequest));
-// });
+router.put("/:id", [], async (req, res, next) => {
+  return next(await controller.updateAddressBook(req as IHttpRequest));
+});
 
 export default router;
