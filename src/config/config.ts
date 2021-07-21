@@ -13,6 +13,6 @@ module.exports = {
     username: getenv.string("DATABASE_USERNAME"),
     dialect: getenv.string("DATABASE_DIALECT"),
     port: getenv.int("DATABASE_PORT"),
-    host: getenv.string("DATABASE_HOST"),
+    host: getenv.string("DATABASE_HOST")
   }
 };

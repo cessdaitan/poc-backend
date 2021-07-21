@@ -1,7 +1,7 @@
 import Routes from "./routes";
 import Express from "express";
 import * as BodyParser from "body-parser";
-import { authorizeApiKey, internalServerError, unprocessableEntity } from "./context/helpers";
+import { internalServerError, unprocessableEntity } from "./context/v1/helpers";
 
 export default class API {
   public readonly app: Express.Application;
@@ -18,6 +18,8 @@ export default class API {
     this.app.use(this.responseHandler);
   }
   private responseHandler(serverResponse, req, res, next): void {
+    console.log(serverResponse);
+
     if (serverResponse.isJoi) {
       return res.status(unprocessableEntity().statusCode).send({
         errors: serverResponse.details.map(obj => {

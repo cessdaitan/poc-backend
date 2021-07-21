@@ -6,13 +6,13 @@ export class AddressBookModel extends Model<AddressBookModel> {
   @Column({ primaryKey: true, autoIncrement: true })
   public id: number;
 
-  @Column({field: "first_name"})
+  @Column({ field: "first_name", allowNull: false })
   public firstName: string;
 
-  @Column({field: "last_name"})
+  @Column({field: "last_name", allowNull: false })
   public lastName: string;
 
-  @Column({field: "phone"})
+  @Column({field: "phone", allowNull: false })
   public phone: string;
 
   @Column({field: "address_number"})
@@ -27,7 +27,7 @@ export class AddressBookModel extends Model<AddressBookModel> {
   @Column({field: "email"})
   public email: string;
 
-  @Column({field: "birth_day"})
-  public birthDay: Date;
+  @Column({field: "birth_date"})
+  public birthDate: Date;
 
 }
