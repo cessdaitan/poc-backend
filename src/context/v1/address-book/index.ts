@@ -1,11 +1,12 @@
 import { Router } from "express";
 import { AddressBookController } from "./controller";
 import { IHttpRequest } from "../protocols";
+import { addressBookGeneralInputValidator } from "./validator";
 
 const router = Router();
 const controller = new AddressBookController();
 
-router.post("/", [], async (req, res, next) => {
+router.post("/", addressBookGeneralInputValidator, async (req, res, next) => {
   const response = await controller.createAddressBook(req as IHttpRequest);
   return next(response);
 });
